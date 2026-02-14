@@ -2,7 +2,7 @@ import { TFile, FileSystemAdapter, Notice } from "obsidian";
 import { findNvim, attach } from "neovim";
 import { EditInNeovimSettings } from "./Settings";
 import * as child_process from "node:child_process";
-import { isPortInUse, searchForBinary, searchDirs, configureProcessSpawnArgs, SpawnProcessOptions } from "./utils";
+import { isPortInUse, searchForBinary, configureProcessSpawnArgs, SpawnProcessOptions } from "./utils";
 
 export default class Neovim {
   instance: ReturnType<typeof attach> | undefined;
@@ -35,7 +35,7 @@ export default class Neovim {
       return;
     }
 
-    const foundNvimBinaries = findNvim({ orderBy: "desc", paths: searchDirs });
+    const foundNvimBinaries = findNvim({ orderBy: "desc" });
     if (foundNvimBinaries.matches.length > 0) {
       this.nvimBinary = foundNvimBinaries.matches[0];
       console.log(`Neovim Information:

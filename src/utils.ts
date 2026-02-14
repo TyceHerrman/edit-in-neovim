@@ -13,13 +13,6 @@ export type SpawnProcessOptions = child_process.SpawnOptionsWithoutStdio & {
 import systeminformation from "systeminformation";
 
 const windows = process.platform === 'win32';
-export const searchDirs = windows ? [] : [
-  '/usr/local/bin',
-  '/usr/bin',
-  '/opt/homebrew/bin',
-  '/home/linuxbrew/.linuxbrew/bin',
-  '/snap/nvim/current/usr/bin',
-];
 
 export async function isPortInUse(port: string) {
   const networkConnections = await systeminformation.networkConnections();
